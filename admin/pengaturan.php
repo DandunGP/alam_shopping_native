@@ -173,7 +173,7 @@
                             <span class="input-group-text" id="basic-addon1">Rp</span>
                         </div>
                         <input type="text" name="min_shop_to_free_shipping_cost" value="<?php echo set_value('min_shop_to_free_shipping_cost', get_settings('min_shop_to_free_shipping_cost')); ?>" class="form-control" id="free_ongkir">
-                     </div> 
+                     </div>  
                    </div>
                 </div>
             </div>

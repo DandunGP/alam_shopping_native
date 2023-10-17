@@ -1,7 +1,7 @@
 <?php
     include 'layouts/header.php';
 
-    include 'produk_function.php';
+    include 'function/produk_function.php';
 
     $product = get_product_by_id($_GET['id']);
     $kategori = category_data($product['category_id']);
@@ -181,7 +181,7 @@
 
         $.ajax({
             method: 'POST',
-            url: 'produk_delete.php',
+            url: 'function/produk_delete.php',
             data: data + "&action=delete_product",
             success: function (res) {
                 console.log(res);

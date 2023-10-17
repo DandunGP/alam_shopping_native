@@ -1,9 +1,6 @@
 <?php
     include 'layouts/header.php';
 
-    include 'profile_function.php';
-
-    $user = get_data_user($_SESSION['admin']['id']);
 ?>
     <!-- Header -->
     <div class="header bg-primary pb-6">

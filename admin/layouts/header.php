@@ -1,5 +1,9 @@
 <?php 
 session_start();
+
+include 'function/profile_function.php';
+
+$user = get_data_user($_SESSION['admin']['id']);
 ?>
 <!DOCTYPE html>
  <html>
@@ -137,7 +141,7 @@ session_start();
                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  <div class="media align-items-center">
                    <span class="avatar avatar-sm rounded-circle">
-                     <images src="../images/admin.png">
+                     <img src="admin_gambar/<?php echo $user['profile_picture']?>" alt="">
                    </span>
                    <div class="media-body ml-2 d-none d-lg-block">
                      <span class="mb-0 text-sm  font-weight-bold">Administator</span>

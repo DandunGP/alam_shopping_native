@@ -171,7 +171,7 @@
 
       $.ajax({
         method: 'GET',
-        url: 'kategori_function.php',
+        url: 'function/kategori_function.php',
         data: {
             action:'view_data',
             id:id,
@@ -200,7 +200,7 @@
 
       $.ajax({
         method: 'POST',
-        url: 'kategori_function.php',
+        url: 'function/kategori_function.php',
         data: data + '&action=edit_category',
         success: function (res) {
           if (res.code == 201) {
@@ -226,7 +226,7 @@
 
       $.ajax({
         method: 'POST',
-        url: 'kategori_function.php',
+        url: 'function/kategori_function.php',
         data: {
             action: 'delete_category',
             id:id
@@ -248,7 +248,7 @@
     var table = $('#packageList').DataTable({
       "ajax" : {
             type: "GET",
-            url: 'kategori_function.php',
+            url: 'function/kategori_function.php',
             data: {
                 action: 'list'
             },
@@ -291,7 +291,7 @@
 
       $.ajax({
         method: 'POST',
-        url: 'kategori_function.php',
+        url: 'function/kategori_function.php',
         data: data + '&action=add_category',
         context: this,
         success: function(response) {

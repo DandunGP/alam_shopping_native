@@ -103,7 +103,7 @@ $(document).ready(function() {
 
       $.ajax({
         method: 'POST',
-        url: 'pelanggan_function.php',
+        url: 'function/pelanggan_function.php',
         data: {
             id: id
         },
@@ -124,7 +124,7 @@ $(document).ready(function() {
     var table = $('#customerList').DataTable({
       "ajax" : {
             type: "GET",
-            url: 'pelanggan_function.php',
+            url: 'function/pelanggan_function.php',
             data: {
                 action: 'list'
             },

@@ -35,6 +35,7 @@ function login()
                     ";
             } else {
                 $_SESSION['status_login'] = true;
+                $_SESSION['customer'] = $row;
                 $_SESSION['nama'] = $row['username'];
                 $_SESSION['status'] = $row['status'];
                 $_SESSION['id'] = $row['username'];
@@ -48,7 +49,7 @@ function login()
                 }
                 echo "
                     <script>
-                        window.location='customer/home.php';
+                        window.location='customer/dashboard.php';
                     </script>
                     ";
             }

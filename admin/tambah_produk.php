@@ -1,7 +1,7 @@
 <?php 
     include 'layouts/header.php';
 
-    include 'produk_function.php';
+    include 'function/produk_function.php';
     $categories = get_all_categories();
 ?>
     <div class="header bg-primary pb-6">

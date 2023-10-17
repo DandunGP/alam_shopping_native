@@ -1,7 +1,7 @@
 <?php 
     include 'layouts/header.php';
 
-    include 'produk_function.php';
+    include 'function/produk_function.php';
 
     $allProducts = get_all_product();
     $itemPerPage = 8;
