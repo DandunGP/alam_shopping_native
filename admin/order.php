@@ -60,7 +60,7 @@
                   <?php $userData = get_user_by_id($order['user_id']);?>
                     <tr>
                     <th scope="col">
-                    <b><a href="order.php?id=<?php echo $order['id'];?>">#<?php echo $order['order_number']?></a></b>
+                    <b><a href="view_order.php?id=<?php echo $order['id'];?>">#<?php echo $order['order_number']?></a></b>
                     </th>
                     <td><?php echo $userData['name']; ?></td>
                     <td>

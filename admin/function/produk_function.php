@@ -1,5 +1,5 @@
 <?php 
-    include "../../config/database.php";
+    include "../config/database.php";
 
     $pageSekarang = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 

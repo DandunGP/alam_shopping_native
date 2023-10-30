@@ -14,6 +14,40 @@
         return $orders;
     }
 
+    function get_all_payment_customer_status($idCustomer){
+        global $conn;
+        $result = mysqli_query($conn, "SELECT p.*, o.order_number FROM payments p JOIN orders o ON o.id = p.order_id WHERE user_id = $idCustomer ORDER BY p.payment_date DESC");
+        $payments = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $payments[] = $row;
+        }
+
+        return $payments;
+    }
+
+    function get_all_bank(){
+        global $conn;
+        $result = mysqli_query($conn, "SELECT * FROM settings WHERE settings.key='payment_banks'");
+        $banks = mysqli_fetch_assoc($result);
+        if ($banks) {
+            $banks = json_decode($banks['content'], true);
+        } else {
+            $banks = [];
+        }
+        return $banks;
+    }
+
+    function get_all_order_customer_status_new($idCustomer){
+        global $conn;
+        $result = mysqli_query($conn, "SELECT * FROM orders WHERE user_id = $idCustomer AND order_status = 1");
+        $orders = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $orders[] = $row;
+        }
+
+        return $orders;
+    }
+
     function get_limit_order_customer($limit, $offset, $idCustomer) {
         global $conn;
         $result = mysqli_query($conn, "SELECT * FROM orders WHERE user_id = $idCustomer LIMIT $limit OFFSET $offset");

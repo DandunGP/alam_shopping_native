@@ -53,7 +53,7 @@ $user = get_customer_data($_SESSION['customer']['id']);
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="dashboard.php">
+    <a href="../index.php">
       
       <h3 align="center">Karya Taman Alam</h3>
     </a>

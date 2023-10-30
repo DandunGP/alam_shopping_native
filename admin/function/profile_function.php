@@ -1,5 +1,5 @@
 <?php 
-    include '../../config/database.php';
+    include '../config/database.php';
 
     function get_data_user($id){
         global $conn;

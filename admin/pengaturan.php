@@ -1,5 +1,11 @@
 <?php
     include 'layouts/header.php';
+
+    include 'function/pengaturan_function.php';
+
+    $data = get_data_pengaturan();
+    $banks = $data[11]['content'];
+    $banks = json_decode($banks, true);
 ?>
     <!-- Header -->
     <div class="header bg-primary pb-6">
@@ -38,37 +44,37 @@
 
                 <div class="form-group">
                   <label class="form-control-label" for="name">Nama toko:</label>
-                  <input type="text" name="store_name" value="Gerai Handphone Samsung" class="form-control" id="name">
+                  <input type="text" name="store_name" value="<?php echo $data[1]['content'];?>" class="form-control" id="name">
                 </div>
 
                 <div class="row">
                   <div class="col-6">
                     <div class="form-group">
                       <label class="form-control-label" for="phone_number">No. HP:</label>
-                      <input type="text" name="store_phone_number" value="081382055381" class="form-control" id="phone_number">
+                      <input type="text" name="store_phone_number" value="<?php echo $data[2]['content'];?>" class="form-control" id="phone_number">
                     </div>
                   </div>
                   <div class="col-6">
                     <div class="form-group">
                       <label class="form-control-label" for="email">Email:</label>
-                      <input type="text" name="store_email" value="muhamadroin81@gmail.com" class="form-control" id="email">
+                      <input type="text" name="store_email" value="<?php echo $data[3]['content'];?>" class="form-control" id="email">
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="form-control-label" for="address">Alamat:</label>
-                  <textarea name="store_address" class="form-control" id="address"><?php echo "'"?></textarea>
+                  <textarea name="store_address" class="form-control" id="address"><?php echo $data[8]['content'];?></textarea>
                 </div>
 
                 <div class="form-group">
                   <label class="form-control-label" for="tagline">Tagline:</label>
-                  <input type="text" name="store_tagline" value="Produk Terjamin dan bergaransi" class="form-control" id="tagline">
+                  <input type="text" name="store_tagline" value="<?php echo $data[4]['content'];?>" class="form-control" id="tagline">
                 </div>
 
                 <div class="form-group">
                   <label class="form-control-label" for="description">Deskripsi:</label>
-                  <textarea name="store_description" class="form-control" id="description">Kami menyediakan Produk terbaru dari samsung</textarea>
+                  <textarea name="store_description" class="form-control" id="description"><?php echo $data[7]['content'];?></textarea>
                 </div>
               
               </div>
@@ -90,7 +96,7 @@
                   <div class="col-12">
                     <div class="form-group">
                       <label for="">Nama bank:</label>
-                      <input type="text" class="form-control" name="banks[<?php echo $n; ?>][bank]" value="<?php echo $bankp['bank']; ?>">
+                      <input type="text" class="form-control" name="banks[<?php echo $n; ?>][bank]" value="<?php echo $bank['bank']; ?>">
                     </div>
                   </div>
                   <div class="col-6">
@@ -152,35 +158,8 @@
             </div>
 
             <div class="card">
-                <div class="card-header">
-                    <h3 class="mb-0">Belanja</h3>
-                </div>
                 <div class="card-body">
-                <div class="form-group">
-                     <label class="form-control-label" for="ongkir">Ongkos kirim:</label>
-                     <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Rp</span>
-                        </div>
-                        <input type="text" name="shipping_cost" value="<?php echo set_value('shipping_cost', get_settings('shipping_cost')); ?>" class="form-control" id="ongkir">
-                     </div>
-                   </div>
-
-                   <div class="form-group">
-                     <label class="form-control-label" for="free_ongkir">Minimal belanja untuk gratis ongkir:</label>
-                     <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">Rp</span>
-                        </div>
-                        <input type="text" name="min_shop_to_free_shipping_cost" value="<?php echo set_value('min_shop_to_free_shipping_cost', get_settings('min_shop_to_free_shipping_cost')); ?>" class="form-control" id="free_ongkir">
-                     </div>  
-                   </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <input type="submit" value="Simpan" class="btn btn-primary">
+                    <input type="submit" value="Simpan" name="ubah" class="btn btn-primary">
                 </div>
             </div>
 
@@ -188,10 +167,23 @@
       </div>
 
     </form>
+    <?php 
+      if(isset($_POST['ubah'])){
+          update_all_setting();
+      }
+    ?>
 
     <script>
       jQuery(document).ready(function () {
             let no = 0;
+            $('input[name^="banks["]').each(function() {
+                var name = $(this).attr('name');
+                var match = name.match(/\[([0-9]+)\]/);
+                if (match && match[1]) {
+                    no = parseInt(match[1]);
+                }
+            });
+
             jQuery(".btn-add").click(function () {
                 no = no + 1;
                 let markup = `<div class="row alert alert-success m-1">

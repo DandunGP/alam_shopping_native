@@ -18,7 +18,7 @@
                     <h1>Pembayaran Saya</h1>
                 </div>
                 <div class="col-sm-2">
-                    <a href="tambah_pembayaran.php">Tambah Pembayaran</a>
+                    <a href="konfirmasi_pembayaran.php">Tambah Pembayaran</a>
                 </div>
                 <div class="col-sm-5">
                     <ol class="breadcrumb float-sm-right">
@@ -59,7 +59,7 @@
                             Belum ada data pembayaran
                         </div>
 
-                        <a href="tambah_pembayaran.php">Tambah Pembayaran</a>
+                        <a href="konfirmasi_pembayaran.php">Tambah Pembayaran</a>
                     </div>
                 </div>
                 <?php endif; ?>
