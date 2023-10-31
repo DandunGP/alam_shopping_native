@@ -36,7 +36,7 @@
             echo "
                 <script>
                     alert('Konfirmasi berhasil di tambahkan');
-                    window.location='../pembayaran.php'
+                    window.location='pembayaran.php'
                 </script>
                 ";
         }else{

@@ -21,7 +21,7 @@
   <section class="ftco-section ftco-Keranjang Belanja">
           <div class="container">
           <?php if ( count($carts) > 0) : ?>
-            <form action="checkout.php" method="POST">
+            <form action="checkout.php" method="GET">
               <div class="row">
               <div class="col-md-12 ftco-animate">
                   <div class="cart-list">
@@ -77,6 +77,7 @@
                           <span>Total</span>
                           <span class="n-total font-weight-bold">Rp <?php echo number_format($total_price, 0, '.', '.'); ?></span>
                           <input type="hidden" name="total_price" value="<?php echo $total_price ?>">
+                          <input type="hidden" name="carts" value='<?php echo json_encode($carts) ?>'>
                       </p>
                   </div>
                   <p><button type="submit" class="btn btn-primary py-3 px-4">Checkout</button></p>
@@ -110,7 +111,6 @@
         action:'remove_item' 
         },
       success: function (res) {
-        console.log(res);
         if (res.code == 204) {
           tr.addClass('alert alert-danger');
 

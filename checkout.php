@@ -23,7 +23,7 @@
       <div class="row justify-content-center">
         <div class="col-xl-7 ftco-animate">
                 <h3 class="mb-4 billing-heading">Alamat Pengiriman</h3>
-
+                <input type="hidden" name="keranjang" value='<?php echo $_GET['carts']?>'>
                 <div class="form-group">
                     <label for="name" class="form-control-label">Pengiriman untuk (nama):</label>
                     <input type="text" name="name" value="<?php echo $user['name']; ?>" class="form-control" id="name" required>
@@ -52,8 +52,8 @@
                         <h3 class="billing-heading mb-4">Rincian Belanja</h3>
                               <p class="d-flex total-price">
                                   <span>Total</span>
-                                  <span>Rp <?php echo number_format($_POST['total_price'],0,'.','.'); ?></span>
-                                  <input type="hidden" name="total_price" value="<?php echo $_POST['total_price']?>">
+                                  <span>Rp <?php echo number_format($_GET['total_price'],0,'.','.'); ?></span>
+                                  <input type="hidden" name="total_price" value="<?php echo $_GET['total_price']?>">
                               </p>
                               </div>
                 </div>
@@ -71,7 +71,7 @@
                               </div>
 
                               <div class="form-group text-right" style="margin-top: 10px;">
-                <input type="submit" class="btn btn-primary py-2 px-2" value="Buat Pesanan">
+                <input type="submit" name="checkout" class="btn btn-primary py-2 px-2" value="Buat Pesanan">
             </div>
                 </div>
 
@@ -81,6 +81,11 @@
       </div>
 
     </form>
+    <?php 
+        if(isset($_POST['checkout'])){
+            checkout_order($_SESSION['customer']['id']);
+        }
+    ?>
     </div>
   </section> <!-- .section -->
 

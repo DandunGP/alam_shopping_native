@@ -48,13 +48,13 @@ $user = get_data_user($_SESSION['admin']['id']);
            <ul class="navbar-nav">
              <li class="nav-item">
                <a class="nav-link" href="dashboard.php">
-                 <i class="ni ni-tv-2 text-primary"></i>
+                 <i class="fa fa-television text-primary"></i>
                  <span class="nav-link-text">Dasbor</span>
                </a>
              </li>
              <li class="nav-item">
               <a class="nav-link" href="kategori.php">
-                <i class="ni ni-bullet-list-67 text-info"></i>
+                <i class="fa fa-list text-info"></i>
                 <span class="nav-link-text">Kategori Produk</span>
               </a>
             </li>

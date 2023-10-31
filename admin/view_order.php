@@ -228,11 +228,11 @@
                     <div class="card-footer">
                         <form action="" method="POST">
                         <div class="row">
-                          <input type="hidden" name="id" value="<?php echo $payment['id']; ?>">
-                          <input type="hidden" name="order" value="<?php echo $data['id']; ?>">
+                          <input type="hidden" name="id" value="<?php echo $payment['payment_id']; ?>">
+                          <input type="hidden" name="order" value="<?php echo $payment['order_id']; ?>">
                             <div class="col-md-9">
                                 <select class="form-control" name="action">
-                                  <?php if ($data['payment_status'] == 1) : ?>
+                                  <?php if ($payment['payment_status'] == 1) : ?>
                                     <option value="1">Konfirmasi Pembayaran</option>
                                     <option value="2">Pembayaran Tidak Ada</option>
                                   <?php else : ?>
@@ -241,10 +241,15 @@
                                 </select>
                             </div>
                             <div class="col-md-3 text-right">
-                                <input type="submit" class="btn btn-primary" value="OK">
+                                <input type="submit" name="confirm" class="btn btn-primary" value="OK">
                             </div>
                         </div>
                         </form>
+                        <?php 
+                          if(isset($_POST['confirm'])){
+                              konfirmasi_pembayaran($_POST['order'], $_POST['id'], $_POST['action']);
+                          }
+                        ?>
                     </div>
                     <?php endif; ?>
                 </div>

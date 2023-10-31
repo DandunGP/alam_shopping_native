@@ -114,7 +114,9 @@
               <div class="product">
                   <a href="produk_detail.php?id=<?php echo $product['id']?>&sku=<?php echo $product['sku']?>" class="img-prod">
                     <div class="justify-content">
-                      <img class="img-fluid" src="admin/produk_gambar/<?php echo $product['picture_name']?>" alt="<?php echo $product['name']; ?>">
+                      <div class="image-fix">
+                        <img class="img-fluid" src="admin/produk_gambar/<?php echo $product['picture_name']?>" alt="<?php echo $product['name']; ?>">
+                      </div>
                     </div>
                   </a>
                   <div class="text py-3 pb-4 px-3 text-center">

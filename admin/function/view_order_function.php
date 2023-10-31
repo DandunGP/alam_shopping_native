@@ -50,7 +50,7 @@
 
     function get_data_payment_by_order_id($idOrder){
         global $conn;
-        $result = mysqli_query($conn, "SELECT p.*, o.* FROM payments p JOIN orders o ON o.id = p.order_id WHERE order_id=$idOrder");
+        $result = mysqli_query($conn, "SELECT p.id as payment_id, o.id as order_id, p.*, o.* FROM payments p JOIN orders o ON o.id = p.order_id WHERE o.id = $idOrder");
         $payments = mysqli_fetch_assoc($result);
 
         return $payments;
@@ -78,6 +78,42 @@
                 <script>
                     alert('Status berhasil di perbaharui');
                     window.location='order.php'
+                </script>
+                ";
+        }else{
+            echo "
+                <script>
+                    alert('Status gagal diperbaharui');
+                </script>
+                ";
+        }
+    }
+
+    function konfirmasi_pembayaran($order_id, $id, $action){
+        global $conn;
+
+        if ($action == 1)
+        {
+            $status = 2;
+            // $flash = 'Pembayaran berhasil dikonfirmasi';
+        }
+        else if($action == 2)
+        {
+            $status = 3;
+            // $flash = 'Pembayaran ditandai sebagai tidak ada';
+        }
+        else
+        {
+            // $flash = 'Tidak ada tindakan dilakukan';
+        }
+
+        $query = mysqli_query($conn, "UPDATE orders SET order_status='2' WHERE id=$order_id");
+        $query2 = mysqli_query($conn, "UPDATE payments SET payment_status='$status' WHERE id=$id");
+        if($query && $query2){
+            echo "
+                <script>
+                    alert('Status berhasil di perbaharui');
+                    window.location='pembayaran.php'
                 </script>
                 ";
         }else{

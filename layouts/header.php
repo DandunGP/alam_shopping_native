@@ -74,7 +74,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
                 <a class="dropdown-item" href="keranjang.php">Keranjang Belanja</a>
-                <a class="dropdown-item" href="konfirmasi.php">Konfirmasi Pembayaran</a>
+                <a class="dropdown-item" href="customer/konfirmasi_pembayaran.php">Konfirmasi Pembayaran</a>
               </div>
             </li>
 	          <li class="nav-item"><a href="tentang_kami.php" class="nav-link">Tentang Kami</a></li>

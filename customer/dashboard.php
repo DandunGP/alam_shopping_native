@@ -1,5 +1,9 @@
 <?php 
     include 'layouts/header.php';
+
+    include 'function/dashboard_function.php';
+
+    $data = data_dashboard();
 ?>
   <div class="content-wrapper">
     <div class="content-header">
@@ -25,7 +29,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>Total Oerder 123</h3>
+                <h3><?php echo $data['total_order']['total_order']?></h3>
 
                 <p>Order</p>
               </div>
@@ -40,7 +44,7 @@
             <!-- small box -->
             <div class="small-box bg-primary">
               <div class="inner">
-                <h3>Total Proses Order</h3>
+                <h3><?php echo $data['total_process']['total_order']?></h3>
 
                 <p>Order dalam proses</p>
               </div>
@@ -55,7 +59,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>TOtal Pembayaran Order</h3>
+                <h3><?php echo $data['total_payment']['total_payment']?></h3>
 
                 <p>Pembayaran</p>
               </div>
@@ -70,7 +74,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>Total Review Order</h3>
+                <h3><?php echo $data['total_review']['total_review']?></h3>
 
                 <p>Review</p>
               </div>

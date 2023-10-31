@@ -20,5 +20,7 @@
   <!-- Argon JS -->
   <script src="../js/argon9f1e.js?v=1.1.0"></script>
   <script src="https://kit.fontawesome.com/8d85ff5c78.js" crossorigin="anonymous"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
