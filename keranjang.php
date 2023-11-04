@@ -4,8 +4,12 @@
 
     include 'function/lihat_keranjang_function.php';
 
-    $carts = get_all_keranjang($_SESSION['customer']['id']);
-    $total_price = get_total_price($_SESSION['customer']['id']);
+    if(isset($_SESSION['customer']['id'])){
+      $carts = get_all_keranjang($_SESSION['customer']['id']);
+      $total_price = get_total_price($_SESSION['customer']['id']);
+    }else{
+      $carts = array();
+    }
 ?>
 <div class="hero-wrap hero-bread" style="background-image: url('images/cart.jpg');">
     <div class="container">
@@ -20,8 +24,8 @@
 
   <section class="ftco-section ftco-Keranjang Belanja">
           <div class="container">
-          <?php if ( count($carts) > 0) : ?>
-            <form action="checkout.php" method="GET">
+          <?php if ( count($carts) > 0 && isset($_SESSION['customer']['id'])) : ?>
+            <form action="" method="POST">
               <div class="row">
               <div class="col-md-12 ftco-animate">
                   <div class="cart-list">
@@ -37,10 +41,11 @@
                             </tr>
                           </thead>
                           <tbody>
-                              <?php foreach ($carts as $item) : ?>
+                              <?php foreach ($carts as $index => $item) : ?>
                                 <?php 
                                     $produk = get_product_by_id($item['product_id']);
                                 ?>
+                                <!-- <input type="hidden" name="index" value="" readonly> -->
                             <tr class="text-center cart-<?php echo $produk['id']?>">
                               <td class="product-remove"><a href="#" class="remove-item" data-id="<?php echo $produk['id']; ?>"><span><ion-icon name="close"></ion-icon></span></a></td>
                               
@@ -54,11 +59,11 @@
                               
                               <td class="quantity">
                                   <div class="input-group mb-3">
-                                   <input type="text" name="quantity" class="quantity form-control input-number" value="<?php echo $item['total_qty']; ?>" min="1" max="100">
+                                   <input type="text" name="quantity[<?php echo $index;?>]" class="quantity form-control input-number" value="<?php echo $item['qty']; ?>" min="1" max="100">
                                 </div>
                             </td>
                               
-                              <td class="total">Rp <?php echo number_format($produk['price'] * $item['total_qty'], 0, '.', '.'); ?></td>
+                              <td class="total">Rp <?php echo number_format($produk['price'] * $item['qty'], 0, '.', '.'); ?></td>
                             </tr><!-- END TR-->
                               <?php endforeach; ?>
                           </tbody>
@@ -80,10 +85,15 @@
                           <input type="hidden" name="carts" value='<?php echo json_encode($carts) ?>'>
                       </p>
                   </div>
-                  <p><button type="submit" class="btn btn-primary py-3 px-4">Checkout</button></p>
+                  <p><button type="submit" name="checkout" class="btn btn-primary py-3 px-4">Checkout</button></p>
               </div>
           </div>
           </form>
+          <?php
+            if(isset($_POST['checkout'])){
+              checkout_save($carts);
+            }
+          ?>
           <?php else : ?>
             <div class="row">
               <div class="col-md-12 ftco-animate">

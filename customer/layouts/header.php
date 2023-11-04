@@ -3,6 +3,14 @@ include 'function/customer_function.php';
 
 session_start();
 
+if(!isset($_SESSION['customer']['id'])){
+  echo "
+              <script>
+                  window.location='../login.php';
+              </script>
+              ";
+}
+
 $user = get_customer_data($_SESSION['customer']['id']);
 ?><!DOCTYPE html>
 <html lang="ID-id">

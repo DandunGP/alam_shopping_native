@@ -9,6 +9,40 @@
         return $users; 
     }
 
+    function get_all_keranjang($id){
+        global $conn;
+        $result = mysqli_query($conn, "SELECT id, product_id, qty FROM keranjang WHERE user_id = $id GROUP BY product_id");
+        $carts = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $carts[] = $row;
+        }
+
+        $carts = json_encode($carts);
+        return $carts;
+    }
+
+    function get_total_price($user_id){
+        global $conn;
+        $total_price = 0;
+
+        $result = mysqli_query($conn, "SELECT id, product_id, qty FROM keranjang WHERE user_id = $user_id GROUP BY product_id");
+        $items = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $items[] = $row;
+        }
+        
+        foreach($items as $it){
+            global $conn;
+            $id_items = $it['product_id'];
+            $result = mysqli_query($conn, "SELECT * FROM produk WHERE id=$id_items");
+            $products = mysqli_fetch_assoc($result);
+            
+            $total_price += $products['price'] * $it['qty'];
+        }
+
+        return $total_price;
+    }
+
     function createOrderNumber($quantity, $user_id) {
         $alpha = strtoupper(substr(str_shuffle('abcdefghijklmnopqrstuvwxyz'), 0, 3));
         $num = mt_rand(100, 999);
@@ -62,16 +96,28 @@
         // order item input
         if($query){
             $order_id = mysqli_insert_id($conn);
-            $items = json_decode($_POST['keranjang'], true);
+            $items = json_decode($_POST['keranjang']);
 
             foreach ($items as $it){
-                $product = get_data_product($it['product_id']);
-                $product_id = $it['product_id'];
-                $qty = $it['total_qty'];
-                $order_price = $it['total_qty'] * $product['price'];
+                $product = get_data_product($it->product_id);
+                $product_id = $it->product_id;
+                $qty = $it->qty;
+                $order_price = $it->qty * $product['price'];
                 mysqli_query($conn, "INSERT INTO order_item(order_id, product_id, order_qty, order_price) VALUES ($order_id, $product_id, $qty, '$order_price')");
+                delete_from_carts($it->id);
             }
         }
+
+        echo "
+              <script>
+                  alert('Berhasil melakukan checkout.');
+                  window.location='keranjang.php';
+              </script>
+              ";
     }
     
+    function delete_from_carts($id){
+        global $conn;
+        mysqli_query($conn, "DELETE FROM keranjang WHERE id=$id");
+    }
 ?>

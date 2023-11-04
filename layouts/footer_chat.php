@@ -80,6 +80,7 @@
 <script src="js/scrollax.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/toastr.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://kit.fontawesome.com/8d85ff5c78.js" crossorigin="anonymous"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -102,53 +103,7 @@
   "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
 }
-
-  $.ajax({
-    method: 'GET',
-    url: 'function/cart_function.php',
-    data:{
-      action: 'cart_info'
-    },
-    success: function (res) {
-      var data = res.data;
-
-      console.log(data);
-      var total_item = data.total_item;
-      $('.cart-item-total').text(total_item);
-    }
-  });
-
-  $('.add-cart').click(function(e) {
-    e.preventDefault();
-
-    var id = $(this).data('id');
-    var qty = $(this).data('qty');
-    qty = (qty > 0) ? qty : 1;
-
-    $.ajax({
-      method: 'POST',
-      url: 'function/cart_function.php',
-      data: {
-        id: id,
-        qty: qty,
-        action: 'add_item'
-      },
-      success: function (res) {
-        console.log(res);
-        console.log(res.total_item);
-        if (res.code == 200) {
-          var totalItem = res.total_item;
-
-          $('.cart-item-total').text(totalItem);
-          toastr.info('Item ditambahkan dalam keranjang');
-        }
-        else {
-          console.log('Terjadi kesalahan');
-        }
-      }
-    });
-  });
 </script>
-  
+
 </body>
 </html>

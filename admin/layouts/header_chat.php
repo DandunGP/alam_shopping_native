@@ -16,9 +16,13 @@ $user = get_data_user($_SESSION['admin']['id']);
    <link rel="stylesheet" href="../css/nucleo.css" type="text/css">
    <link rel="stylesheet" href="../css/all.min.css" type="text/css">
    <link rel="stylesheet" href="../css/argon9f1e.css?v=1.1.0" type="text/css">
+   <link rel="stylesheet" href="../css/chat.css" type="text/css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
    <script src="../js/jquery.min.js"></script>
    <script src="../js/bootstrap.bundle.min.js"></script>
- 
  </head>
  
  <body>
@@ -94,7 +98,8 @@ $user = get_data_user($_SESSION['admin']['id']);
                  <i class="fa fa-television text-primary"></i>
                  <span class="nav-link-text">Chat</span>
                </a>
-             </li>			
+             </li>		
+			
         
            </ul>
          </div>

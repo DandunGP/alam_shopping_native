@@ -31,7 +31,7 @@
             </div>
             <div class="pb-md-5">
                 <p><?php echo $data[7]['content']?></p>
-                          <p><a href="produk.php" class="btn btn-danger">Belanja sekarang!</a></p>
+                          <p><a href="index.php#products" class="btn btn-danger">Belanja sekarang!</a></p>
                       </div>
                   </div>
               </div>

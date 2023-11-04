@@ -12,8 +12,9 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
-	
-
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
     
@@ -34,9 +35,13 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	<link rel="stylesheet" href="css/toastr.min.css">
+	<link rel="stylesheet" href="css/chat.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </head>
   <body class="goto-here">
 		<div class="py-1 bg-danger">
@@ -79,7 +84,7 @@
             </li>
 	        <li class="nav-item"><a href="tentang_kami.php" class="nav-link">Tentang Kami</a></li>
           	<li class="nav-item"><a href="kontak.php" class="nav-link">Kontak</a></li>
-			<li class="nav-item"><a href="chat.php" class="nav-link">Chat Admin</a></li>
+		  	<li class="nav-item"><a href="chat.php" class="nav-link">Chat Admin</a></li>
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Akun</a>
               <div class="dropdown-menu" aria-labelledby="dropdown05">

@@ -3,9 +3,17 @@
     include 'function/order_function.php';
     include 'function/konfirmasi_function.php';
 
-    $orders = get_all_order_customer_status_new($_SESSION['customer']['id']);
-    $banks = get_all_bank();
-    $payments = get_all_payment_customer_status($_SESSION['customer']['id']);
+    if(!isset($_SESSION['customer']['id'])){
+        echo "
+                    <script>
+                        window.location='../login.php';
+                    </script>
+                    ";
+    }else{
+        $orders = get_all_order_customer_status_new($_SESSION['customer']['id']);
+        $banks = get_all_bank();
+        $payments = get_all_payment_customer_status($_SESSION['customer']['id']);
+    }
 ?>
 <div class="content-wrapper">
     <section class="content-header">

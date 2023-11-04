@@ -15,7 +15,17 @@ switch ($action) {
         $qty = $_POST['qty'];
         $user_id = $_SESSION['customer']['id'];
 
-        add_cart($id, $qty, $user_id);
+        // check keranjang
+        $result = mysqli_query($conn, "SELECT * FROM keranjang WHERE product_id=$id AND user_id=$user_id");
+        $items = mysqli_fetch_assoc($result);
+
+        if($items != NULL){
+            $newQty = $items['qty'] + $qty;
+            mysqli_query($conn, "UPDATE keranjang SET qty = $newQty WHERE product_id=$id AND user_id=$user_id");
+        }else{
+            add_cart($id, $qty, $user_id);
+        }
+        
         $result = mysqli_query($conn, "SELECT * FROM keranjang WHERE user_id=$user_id");
         $items = [];
         while ($row = mysqli_fetch_assoc($result)) {
